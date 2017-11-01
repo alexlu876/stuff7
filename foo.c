@@ -27,6 +27,7 @@ int main(){
   }
   error_check(write(fd, arr, 20));
   close(fd);
+  stat("bar", &buff);
   printf("sizeof file: %lu\n", buff.st_size);
   printf("permissions of file: %o\n", (buff.st_mode << 23) >> 23);
   printf("time of last access: %s", ctime(&buff.st_atime));
