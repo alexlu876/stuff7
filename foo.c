@@ -17,7 +17,6 @@ void error_check(int k){
 
 int main(){
   struct stat buff;
-  stat("bar", &buff);
   int fd;
   fd = open("bar", O_WRONLY | O_TRUNC, 0777);
   int arr[5];
@@ -28,7 +27,7 @@ int main(){
   error_check(write(fd, arr, 20));
   close(fd);
   stat("bar", &buff);
-  printf("sizeof file: %lu\n", buff.st_size);
+  printf("sizeof file: %lld\n", buff.st_size);
   printf("permissions of file: %o\n", (buff.st_mode << 23) >> 23);
   printf("time of last access: %s", ctime(&buff.st_atime));
   return 0;
